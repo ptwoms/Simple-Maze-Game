@@ -19,6 +19,9 @@
 		C82451C818798A6E00ECBFD9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82451B018798A6E00ECBFD9 /* UIKit.framework */; };
 		C82451D018798A6E00ECBFD9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C82451CE18798A6E00ECBFD9 /* InfoPlist.strings */; };
 		C82451D218798A6E00ECBFD9 /* SimpleMazeGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C82451D118798A6E00ECBFD9 /* SimpleMazeGameTests.m */; };
+		C82451DD18798C0000ECBFD9 /* P2MSMazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C82451DC18798C0000ECBFD9 /* P2MSMazeViewController.m */; };
+		C82451E018798D7500ECBFD9 /* P2MSDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C82451DF18798D7500ECBFD9 /* P2MSDrawingView.m */; };
+		C82451E21879914A00ECBFD9 /* maze.png in Resources */ = {isa = PBXBuildFile; fileRef = C82451E11879914A00ECBFD9 /* maze.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,11 @@
 		C82451CD18798A6E00ECBFD9 /* SimpleMazeGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleMazeGameTests-Info.plist"; sourceTree = "<group>"; };
 		C82451CF18798A6E00ECBFD9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C82451D118798A6E00ECBFD9 /* SimpleMazeGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleMazeGameTests.m; sourceTree = "<group>"; };
+		C82451DB18798C0000ECBFD9 /* P2MSMazeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P2MSMazeViewController.h; sourceTree = "<group>"; };
+		C82451DC18798C0000ECBFD9 /* P2MSMazeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P2MSMazeViewController.m; sourceTree = "<group>"; };
+		C82451DE18798D7500ECBFD9 /* P2MSDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P2MSDrawingView.h; sourceTree = "<group>"; };
+		C82451DF18798D7500ECBFD9 /* P2MSDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P2MSDrawingView.m; sourceTree = "<group>"; };
+		C82451E11879914A00ECBFD9 /* maze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maze.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +115,15 @@
 		C82451B218798A6E00ECBFD9 /* SimpleMazeGame */ = {
 			isa = PBXGroup;
 			children = (
+				C82451E11879914A00ECBFD9 /* maze.png */,
 				C82451BB18798A6E00ECBFD9 /* P2MSAppDelegate.h */,
 				C82451BC18798A6E00ECBFD9 /* P2MSAppDelegate.m */,
 				C82451BE18798A6E00ECBFD9 /* Images.xcassets */,
 				C82451B318798A6E00ECBFD9 /* Supporting Files */,
+				C82451DB18798C0000ECBFD9 /* P2MSMazeViewController.h */,
+				C82451DC18798C0000ECBFD9 /* P2MSMazeViewController.m */,
+				C82451DE18798D7500ECBFD9 /* P2MSDrawingView.h */,
+				C82451DF18798D7500ECBFD9 /* P2MSDrawingView.m */,
 			);
 			path = SimpleMazeGame;
 			sourceTree = "<group>";
@@ -222,6 +235,7 @@
 			files = (
 				C82451B718798A6E00ECBFD9 /* InfoPlist.strings in Resources */,
 				C82451BF18798A6E00ECBFD9 /* Images.xcassets in Resources */,
+				C82451E21879914A00ECBFD9 /* maze.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +255,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C82451BD18798A6E00ECBFD9 /* P2MSAppDelegate.m in Sources */,
+				C82451E018798D7500ECBFD9 /* P2MSDrawingView.m in Sources */,
+				C82451DD18798C0000ECBFD9 /* P2MSMazeViewController.m in Sources */,
 				C82451B918798A6E00ECBFD9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

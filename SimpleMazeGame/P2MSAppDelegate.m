@@ -7,6 +7,7 @@
 //
 
 #import "P2MSAppDelegate.h"
+#import "P2MSMazeViewController.h"
 
 @implementation P2MSAppDelegate
 
@@ -14,7 +15,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    P2MSMazeViewController *maze = [[P2MSMazeViewController alloc]initWithNibName:nil bundle:nil];
+    self.window.rootViewController = maze;
     [self.window makeKeyAndVisible];
     return YES;
 }
