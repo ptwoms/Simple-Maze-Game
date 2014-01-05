@@ -21,7 +21,8 @@ typedef enum {
 @interface P2MSMazeViewController (){
     NSArray *board;
     P2MSDrawingView *drawingView;
-    NSMutableIndexSet *indexes;
+    //remove indexes if you allow user to go backward
+    NSMutableIndexSet *occupied;
     NSInteger gameEndIndex, gameStartIndex, gameCurrentIndex;
     CGFloat cellWidth, cellHeight;
     NSUInteger boardWidth, boardHeight;
@@ -42,7 +43,7 @@ typedef enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    indexes = [[NSMutableIndexSet alloc]init];
+    occupied = [[NSMutableIndexSet alloc]init];
     self.view.backgroundColor = [UIColor whiteColor];
 	
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 455, 455)];
@@ -200,10 +201,10 @@ typedef enum {
     }else{
         drawingView.points = [NSMutableArray array];
     }
-    if (indexes) {
-        [indexes removeAllIndexes];
+    if (occupied) {
+        [occupied removeAllIndexes];
     }else{
-        indexes = [NSMutableIndexSet indexSet];
+        occupied = [NSMutableIndexSet indexSet];
     }
     [drawingView.points addObject:[NSValue valueWithCGPoint:CGPointMake(gameStartIndex*cellWidth + (cellWidth/2), 0)]];
     [drawingView.points addObject:[NSValue valueWithCGPoint:CGPointMake(gameStartIndex*cellWidth + (cellWidth/2), cellHeight/2)]];
@@ -221,7 +222,7 @@ typedef enum {
     NSInteger indexY = floorf((positioninside.y)/cellHeight);
     NSInteger newIndex = indexX + (indexY*boardWidth);
 
-    if (gameCurrentIndex == newIndex || [indexes containsIndex:newIndex] || newIndex >= board.count) {
+    if (gameCurrentIndex == newIndex || [occupied containsIndex:newIndex] || newIndex >= board.count) {
     }else if (
               //left
               (newIndex == gameCurrentIndex-1 && ([[board objectAtIndex:gameCurrentIndex]integerValue] & LEFT_OPEN)) ||
@@ -235,7 +236,7 @@ typedef enum {
     {
         gameCurrentIndex = newIndex;
         [drawingView.points addObject:[NSValue valueWithCGPoint:CGPointMake((indexX*cellWidth)+(cellWidth/2), (indexY*cellHeight)+(cellHeight/2))]];
-        [indexes addIndex:gameCurrentIndex];
+        [occupied addIndex:gameCurrentIndex];
         [drawingView setNeedsDisplay];
 
     }
@@ -258,10 +259,10 @@ typedef enum {
 
 - (BOOL)gameCanMoveFurther{
     NSInteger curInt = [[board objectAtIndex:gameCurrentIndex]integerValue];
-    return ((curInt & LEFT_OPEN && ![indexes containsIndex:gameCurrentIndex-1]) ||
-        (curInt & RIGHT_OPEN && ![indexes containsIndex:gameCurrentIndex+1]) ||
-        (curInt & TOP_OPEN && ![indexes containsIndex:gameCurrentIndex-boardWidth]) ||
-        (curInt & BOTTOM_OPEN && ![indexes containsIndex:gameCurrentIndex+boardWidth])
+    return ((curInt & LEFT_OPEN && ![occupied containsIndex:gameCurrentIndex-1]) ||
+        (curInt & RIGHT_OPEN && ![occupied containsIndex:gameCurrentIndex+1]) ||
+        (curInt & TOP_OPEN && ![occupied containsIndex:gameCurrentIndex-boardWidth]) ||
+        (curInt & BOTTOM_OPEN && ![occupied containsIndex:gameCurrentIndex+boardWidth])
         );
 }
 
